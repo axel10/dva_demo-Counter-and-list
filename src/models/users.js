@@ -1,4 +1,4 @@
-import * as doubanService from '../services/userService'
+import * as userService from '../services/userService'
 
 export default {
   namespace: "users",
@@ -20,12 +20,12 @@ export default {
 
   effects: {           //effects指的是涉及到异步请求的方法。通常用来调用服务获取数据。
     * fetch(payload,{put, call}) {
-      const data = yield call(doubanService.fatchData);
+      const data = yield call(userService.fatchData);
       yield put({type: "save", payload: data})
     },
 
     * fetchRemoveItem({item},{put,call}){
-      const result = yield call(doubanService.fetchRemoveItem,item.id);
+      const result = yield call(userService.fetchRemoveItem,item.id);
       if (result){
         console.log(true);
         yield put({type:"removeItem",item})
